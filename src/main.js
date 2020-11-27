@@ -3,8 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import createDialog from './utils/dialog'
 
 Vue.config.productionTip = false
+
+Vue.prototype.$createDialog = createDialog
 
 /* eslint-disable no-new */
 new Vue({

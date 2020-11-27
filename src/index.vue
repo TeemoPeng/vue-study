@@ -13,7 +13,6 @@
 </template>
 
 <script>
-    import createDialog from '@/utils/dialog'
     import Notice from '@/components/Notice'
     export default {
         data() {
@@ -23,7 +22,7 @@
         },
         methods: {
             showDialog() {
-                createDialog(Notice, {
+                this.$createDialog(Notice, {
                     title: '弹窗标题',
                     message: '这是一个弹窗',
                     duration: 3000
