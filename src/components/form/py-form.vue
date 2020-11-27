@@ -23,14 +23,13 @@
         methods: {
             validate(cb) {
                 // 获取所有的py-form-item
-                
-                const tasks = this.$children
+                let tasks = []
+                this.$children
                     .filter(it => it.prop) // 过滤没有prop属性的form-item
-                    .map(item => {
-                        item.validate()
+                    .forEach(item => {
+                        const reuslt = item.validate()
+                        tasks.push(reuslt)
                     })
-
-                console.log('tasks:', tasks);
 
 
                 // 统一处理所有的promise结果

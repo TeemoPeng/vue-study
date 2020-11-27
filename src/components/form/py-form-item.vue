@@ -42,9 +42,10 @@
 
                 // 创建schema实例
                 const schema = new Schema(descriptor)
-                return schema.validate({[this.prop]: value}, errors => {
+                const result =  schema.validate({[this.prop]: value}, errors => {
                     this.error = errors ? errors[0].message : ''
                 })
+                return result
             }
         },
     }
