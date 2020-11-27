@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="py-form-input">
         <input :type='type' :value='value' @input='onInput' v-bind='$attrs'/>
     </div>
 </template>
@@ -36,3 +36,8 @@
         },
     }
 </script>
+<style>
+    .py-form-input{flex:1;display: flex;flex-flow: row;align-items: center;}
+    .py-form-input input{border:1px solid #ddd;padding:8px 10px;border-radius: 4px;width: 100%;flex:1}
+    .py-form-input input:focus{border:1px solid #c7c7ea;outline: none;}
+</style>

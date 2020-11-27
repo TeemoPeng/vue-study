@@ -20,8 +20,10 @@
                 type: Object
             },
         },
+        mounted () {
+        },
         methods: {
-            validate(cb) {
+            validate(callback) {
                 // 获取所有的py-form-item
                 let tasks = []
                 this.$children
@@ -34,8 +36,8 @@
 
                 // 统一处理所有的promise结果
                 Promise.all(tasks)
-                    .then(() => cb(true) )
-                    .catch(() => cb(false) )
+                    .then(() => callback(true) )
+                    .catch(() => callback(false) )
             }
         },
     }
