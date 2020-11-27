@@ -26,13 +26,10 @@
             validate(callback) {
                 // 获取所有的py-form-item
                 let tasks = []
-                this.$children
-                    .filter(it => it.prop) // 过滤没有prop属性的form-item
-                    .forEach(item => {
-                        const reuslt = item.validate()
-                        tasks.push(reuslt)
-                    })
 
+                tasks = this.$children
+                    .filter(item => item.prop) // 过滤掉没有prop属性的form-item
+                    .map(item => item.validate() )
 
                 // 统一处理所有的promise结果
                 Promise.all(tasks)

@@ -32,7 +32,6 @@
             this.$on('validate', () => {
                 this.validate()
             });
-            console.log('label-width:', this.form);
         },
         methods: {
             validate() {

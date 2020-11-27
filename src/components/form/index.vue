@@ -25,7 +25,8 @@
             return {
                 userInfo: {
                     username: '',
-                    password: ''
+                    password: '',
+                    phonenumber: ''
                 },
                 rules: {
                     username: [
