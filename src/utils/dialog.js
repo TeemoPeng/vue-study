@@ -13,6 +13,7 @@ const createDialog = function(Component, props){
     comp.$mount() // 挂载
 
     document.body.appendChild(comp.$el)
+    
 
     // // 1. render方式
     // const vm = new Vue({
