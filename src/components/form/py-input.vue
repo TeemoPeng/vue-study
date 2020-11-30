@@ -33,8 +33,8 @@
 
                 // 通知父级执行校验
                 // this.$parent.$emit('validate')
-                
-                this.dispatch('pyForm', 'validate')
+
+                this.dispatch('pyFormItem', 'validate')
 
             }
         },

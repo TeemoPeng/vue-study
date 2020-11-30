@@ -10,15 +10,19 @@
 </template>
 
 <script>
+    import emitter from '@/mixins/emitter'
     import Schema from 'async-validator'
     export default {
         inheritAttrs: false,
         inject: ['form'],
+        name: 'pyFormItem', 
+        componentName: 'pyFormItem',
         data() {
             return {
                 error: '', // 空为校验通过
             }
         },
+        mixins: [emitter],
         props: {
             label: {
                 type: String,
@@ -32,6 +36,10 @@
             this.$on('validate', () => {
                 this.validate()
             });
+            
+            if (this.prop) {
+                this.dispatch('pyForm','py-form-addFiedls', [this])
+            }
         },
         methods: {
             validate() {
