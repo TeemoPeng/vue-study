@@ -43,6 +43,8 @@ const createDialog = function(Component, props){
 }
 
 export default { 
+
+    // 使用插件的方式
     install(Vue) {
         Vue.prototype.$notice = function(options) {
             return createDialog(Notice, options)
