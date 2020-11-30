@@ -6,6 +6,8 @@
 
 <script>
     export default {
+        name: 'pyForm',
+        componentName: 'pyForm',
         provide() {
             return {
                 form: this

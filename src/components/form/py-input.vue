@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import emitter from '@/mixins/emitter'
     export default {
         inheritAttrs: false, // false , 避免设置到根元素上
         props: {
@@ -17,6 +18,7 @@
                 default: 'text'
             }
         },
+        mixins: [emitter],
         data() {
             return {
                 
@@ -30,7 +32,9 @@
                 this.$emit('input', e.target.value)
 
                 // 通知父级执行校验
-                this.$parent.$emit('validate')
+                // this.$parent.$emit('validate')
+                
+                this.dispatch('pyForm', 'validate')
 
             }
         },

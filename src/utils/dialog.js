@@ -10,10 +10,10 @@ const createDialog = function(Component, props){
 
     const comp = new Ctor({ propsData: props})
 
-    comp.$mount() // 挂载
+    comp.$mount() // 挂载, 得到真实dom
 
     document.body.appendChild(comp.$el)
-    
+
 
     // // 1. render方式
     // const vm = new Vue({
