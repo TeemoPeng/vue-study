@@ -16,7 +16,10 @@ PyVueRouter.install = function(_Vue) {
 
     Vue.mixin({
         beforeCreate() {
-            console.log('this',this)
+            // 根实例中存在router
+            if (this.$options.router) {
+                
+            }
         },
     })
 
