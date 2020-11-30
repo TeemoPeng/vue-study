@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 // import router from './router'
-import router from './pyrouter/index'
+import router from './pyrouter'
 import createDialog from './utils/dialog'
 
 Vue.config.productionTip = false

@@ -5,7 +5,7 @@ import Form from '@/components/form'
 
 // 1.应用插件
 Vue.use(Router)
-
+console.log('index:', Index);
 // 2.创建实例
 export default new Router({
   routes: [
@@ -20,5 +20,5 @@ export default new Router({
       component: Form,
     }
   ],
-  mode: 'history'
+  mode: 'hash'
 })
