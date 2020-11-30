@@ -36,7 +36,7 @@
             this.$on('validate', () => {
                 this.validate()
             });
-            
+
             if (this.prop) {
                 this.dispatch('pyForm','py-form-addFiedls', [this])
             }

@@ -7,7 +7,9 @@ import createDialog from './utils/dialog'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$createDialog = createDialog
+// Vue.prototype.$createDialog = createDialog
+
+Vue.use(createDialog)
 
 /* eslint-disable no-new */
 new Vue({

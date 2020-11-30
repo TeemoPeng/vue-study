@@ -1,5 +1,5 @@
 import Vue from 'vue'
-
+import Notice from '@/components/notice'
 /**
  * 自定义弹窗组件
  */
@@ -42,4 +42,10 @@ const createDialog = function(Component, props){
     return comp
 }
 
-export default createDialog
+export default { 
+    install(Vue) {
+        Vue.prototype.$notice = function(options) {
+            return createDialog(Notice, options)
+        }
+    }
+ }
