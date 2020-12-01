@@ -61,8 +61,6 @@ PyVueRouter.install = function(_Vue) {
                 }
             })
 
-            console.log('component:', component)
-
             return h(component)
         }
     })
