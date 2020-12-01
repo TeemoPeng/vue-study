@@ -7,6 +7,9 @@
  * 4. 在router-view组件中，找到当前path对应的component，调用render方法渲染
  */
 
+import customRouterView from './custom-router-view'
+import customRouterLink from './custom-router-link'
+
 // 定义Vue变量，不用import的方式引入，目的是让CustomRouter 能够不依赖vue, 在install方法调用时，会传入Vue
 let Vue = ''
 
@@ -23,6 +26,14 @@ class CustomRouter {
 
         window.addEventListener('hashchange', () => {
             this.currentPath = window.location.hash.slice(1)
+        })
+
+
+        // 创建router映射表
+        this.routerMap = {}
+        
+        options.routes.forEach(route => {
+            this.routerMap[route.path] = route
         })
 
     }
@@ -42,36 +53,10 @@ CustomRouter.install = function(_Vue) {
     })
 
     // 注册全局组件 router-link
-    Vue.component('router-link', {
-        // 最终渲染的结果： <a href='#/'>xxx</a>
-        props: {
-            to: {
-                type: String,
-                required: true
-            }
-        },
-        render(createElement) {
-            return createElement('a', { attrs: { href: '#' + this.to } }, this.$slots.default)
-        }
-    })
+    Vue.component('router-link', customRouterLink)
     
     // 注册全局组件 router-view
-    Vue.component('router-view', {
-        
-        render(createElement) {
-            // 获取当前path对应的component
-            let component = null
-
-            this.$router.$options.routes.forEach(route => {
-                console.log('route:', route);
-                if (this.$router.currentPath === route.path) {
-                    component = route.component                    
-                }
-            })
-
-            return createElement(component)
-        }
-    })
+    Vue.component('router-view', customRouterView)
 }
 
 

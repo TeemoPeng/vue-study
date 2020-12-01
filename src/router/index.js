@@ -19,5 +19,5 @@ export default new Router({
       component: Form,
     }
   ],
-  mode: 'hash'
+  mode: 'history'
 })
