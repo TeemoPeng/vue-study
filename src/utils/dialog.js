@@ -28,9 +28,7 @@ const createDialog = function(Component, props){
 
     // document.body.appendChild(vm.$el)
 
-    // const comp = vm.$children[0] // 组件实例
-
-    
+    // const comp = vm.$children[0] // 组件实例    
 
 
     // 销毁

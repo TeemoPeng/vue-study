@@ -8,6 +8,10 @@
                 <a @click='showDialog'>自定义弹窗组件</a>
             </li>
         </ul>
+
+        <p @click='$store.commit("add")'>couter:{{$store.state.counter}}</p>
+        <p @click='$store.dispatch("add")'>async.couter: {{$store.state.counter}}</p>
+        <p>double counter: {{$store.getters.doubleCounter}}</p>
         
     </div>
 </template>
@@ -27,6 +31,8 @@
                     duration: 3000
                 }).show()
             }
+        },
+        mounted () {
         },
     }
 </script>

@@ -6,6 +6,7 @@ import App from './App'
 // import router from './pyrouter'
 import router from './custom-router'
 import createDialog from './utils/dialog'
+import store from './store/index'
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,7 @@ Vue.use(createDialog)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
