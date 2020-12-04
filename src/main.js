@@ -6,7 +6,7 @@ import App from './App'
 // import router from './pyrouter'
 import router from './custom-router'
 import createDialog from './utils/dialog'
-import store from './store/index'
+import store from './store'
 
 Vue.config.productionTip = false
 
