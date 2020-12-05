@@ -20,7 +20,7 @@ class CustomRouter {
         
         // 当前path
         // 为当前对象创建一个响应式属性：
-        Vue.util.defineReactive(this, 'currentPath', window.location.hash.slice(1))
+        Vue.util.defineReactive(this, 'currentPath', window.location.hash.slice(1) || '/')
 
         // 监听url变化
 

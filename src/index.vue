@@ -11,7 +11,7 @@
 
         <p @click='$store.commit("add")'>couter:{{$store.state.counter}}</p>
         <p @click='$store.dispatch("add")'>async.couter: {{$store.state.counter}}</p>
-        <p>double counter: {{$store.getters.doubleCounter}}</p>
+        <!-- <p>double counter: {{$store.getters.doubleCounter}}</p> -->
         
     </div>
 </template>
@@ -33,6 +33,7 @@
             }
         },
         mounted () {
+            console.log('index ----  : ', this);
         },
     }
 </script>
