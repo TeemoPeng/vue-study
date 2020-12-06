@@ -8,8 +8,15 @@ class Store {
     constructor(options) {
 
         // state 需要是响应式的，这样才会触发render函数重新渲染
-        this.state = new Vue({
-            data: options.state
+        // this.state = new Vue({
+        //     data: options.state
+        // })
+
+        this._vm = new Vue({
+            data: {
+                // 加两个$, vue不做代理，即通过this._vm.$$state访问不到
+                $$state: options.state
+            }
         })
 
         this._mutations = options.mutations
@@ -19,6 +26,15 @@ class Store {
 
         this.commit = this.commit.bind(this)
         this.dispatch = this.dispatch.bind(this)
+    }
+
+    // 存取器
+    get state() {
+        return this._vm._data.$$state
+    }
+
+    set state(v) {
+        console.error('不能直接修改vue状态')
     }
     /**
      * commit 方法实现
