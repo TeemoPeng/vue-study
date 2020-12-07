@@ -12,6 +12,30 @@ class Store {
     constructor(options) {
         this._mutations = options.mutations
         this._actions = options.actions
+        this._wrappedGetters = options.getters
+
+        // 定义computed选项
+        const computed = {}
+        //暴露getters
+        this.getters = {}
+
+        const store = this
+
+        Object.keys(this._wrappedGetters).forEach(key => {
+            // 获取用户定义的getter
+            const fn = store._wrappedGetters[key]
+
+            //转换为无参的computed
+            computed[key] = function() {
+                return fn(store.state)
+            }
+
+            // 为getters定义只读属性
+            Object.defineProperty(store.getters, key, {
+                get: () => store._vm[key]
+            })
+        })
+
 
         // 创建响应式的state
         // this.state = new Vue({
@@ -26,9 +50,11 @@ class Store {
             data: {
                 // 两个$ , vue不会为这个变量做代理，即不可通过this._vm.$$state访问到
                 $$state: options.state
-            }
+            },
+            computed
         })
 
+        // 重新绑定commit、dispatch上下文为当前Store实例
         this.commit = this.commit.bind(this)
         this.dispatch = this.dispatch.bind(this)
     }
