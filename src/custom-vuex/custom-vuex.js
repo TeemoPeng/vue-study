@@ -1,43 +1,58 @@
 /**
- * 自定义vuex
+ * Vuex 模拟
+ * 1. 暴露一个Store类，一个install方法
+ * 2. 通过mixin方法，在beforeCreate生命周期中获取根实例的store
+ * 3. 创建一个响应式的state
+ * 4. 创建commit、dispatch方法
+ * 5. 实现getters（类似computed）
  */
 
-let Vue;
-
+let Vue = null
 class Store {
     constructor(options) {
-
-        // state 需要是响应式的，这样才会触发render函数重新渲染
-        this.state = new Vue({
-            data: options.state
-        })
-
         this._mutations = options.mutations
         this._actions = options.actions
 
-        // 绑定commit、dispatch上下文为当前Store
+        // 创建响应式的state
+        // this.state = new Vue({
+        //     data: options.state
+        // })
+
+        // 创建响应式的state
+        // Vue.util.defineReactive(this, 'state', options.state)
+
+        // 将state保护起来，不能在外部直接修改
+        this._vm = new Vue({
+            data: {
+                // 两个$ , vue不会为这个变量做代理，即不可通过this._vm.$$state访问到
+                $$state: options.state
+            }
+        })
 
         this.commit = this.commit.bind(this)
         this.dispatch = this.dispatch.bind(this)
     }
-    /**
-     * commit 方法实现
-     * type, mutation类型
-     * payload 参数
-     */
+
+    get state() {
+        return this._vm._data.$$state
+    }
+
+    set state(v) {
+        console.error('不能直接修改vuex中的state')
+    }
+
+    // commit 方法实现, commit 提交的是mutation
     commit(type, payload) {
-        const entry = this._mutations[type] 
+        const entry = this._mutations[type]
 
         if (entry) {
             entry(this.state, payload)
         }
     }
 
-    /**
-     * dispatch 方法实现
-     */
+    // dispatch方法实现
     dispatch(type, payload) {
-        const entry = this._actions[type] 
+        const entry = this._actions[type]
 
         if (entry) {
             entry(this, payload)
@@ -53,9 +68,8 @@ function install(_Vue) {
             if (this.$options.store) {
                 Vue.prototype.$store = this.$options.store
             }
-        }
+        },
     })
-
 }
 
 export default {

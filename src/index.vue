@@ -34,7 +34,7 @@
         },
         mounted () {
             console.log('index ----  : ', this);
-            this.$store.state = {}
+            // this.$store.state = {}
         },
     }
 </script>
