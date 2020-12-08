@@ -13,6 +13,7 @@ const store = new Vuex.Store({
     },
     mutations: {
         add(state) {
+            console.log('state:', state);
             state.counter++
         }
     },
