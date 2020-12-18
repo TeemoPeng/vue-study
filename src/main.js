@@ -13,6 +13,7 @@ import store from './custom-vuex'
 Vue.config.productionTip = false
 
 // Vue.prototype.$createDialog = createDialog
+Vue.prototype.$sb = 'dsb'
 
 Vue.use(createDialog)
 

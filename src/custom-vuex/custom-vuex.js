@@ -16,6 +16,7 @@ class Store {
 
         // 定义computed选项
         const computed = {}
+        
         //暴露getters
         this.getters = {}
 
@@ -48,7 +49,7 @@ class Store {
         // 将state保护起来，不能在外部直接修改
         this._vm = new Vue({
             data: {
-                // 两个$ , vue不会为这个变量做代理，即不可通过this._vm.$$state访问到
+                // 两个$ , vue不会为这个变量做代理
                 $$state: options.state
             },
             computed
@@ -85,7 +86,6 @@ class Store {
         }
     }
 }
-
 function install(_Vue) {
     Vue = _Vue
 

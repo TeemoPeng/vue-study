@@ -33,7 +33,6 @@
             }
         },
         mounted () {
-            console.log('index ----  : ', this);
             // this.$store.state = {}
         },
     }
