@@ -65,10 +65,8 @@ class Store {
     }
 
     set state(v) {
-        console.error('不能直接修改vuex中的state')
+        console.error('不能直接修改vue状态')
     }
-
-    // commit 方法实现, commit 提交的是mutation
     commit(type, payload) {
         const entry = this._mutations[type]
 

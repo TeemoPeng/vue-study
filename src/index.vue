@@ -33,7 +33,6 @@
             }
         },
         mounted () {
-            // this.$store.state = {}
         },
     }
 </script>
